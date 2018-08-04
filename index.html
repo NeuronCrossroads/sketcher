@@ -1,0 +1,25 @@
+<html>
+  <title>Club Demo</title>
+  <head>
+    <link rel="stylesheet" href="index.css"></link>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.12.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="p5.dom.js"></script>
+  </head>
+  <body>
+    <div id="drawingArea">
+      <button id="clearButton" onclick="drawingArea.clear()">Clear</button>
+    </div>
+      <div id="pieArea"></div>
+      <ul id="probsList">
+        <li id="p1" style="border-color: #963D97; margin-top: 0.7em;"></li>
+        <li id="p2" style="border-color: #4885ed"></li>
+        <li id="p3" style="border-color: #3cba54"></li>
+        <li id="p4" style="border-color: #f4c20d"></li>
+        <li id="p5" style="border-color: #db3236"></li>
+      </ul>
+      <script src="neuralNetwork.js"></script>
+      <script src="sketch.js"></script>
+  </body>
+</html>
