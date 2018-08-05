@@ -33,9 +33,9 @@ var drawingArea = function(i) {
   i.drawLines = function() {
     var conditions = i.mouseX > 0 && i.mouseX < cwidth && i.mouseY > 0 && i.mouseY < cheight && i.mouseIsPressed
     if (conditions) {
-      i.strokeWeight(10)
+      i.strokeWeight(15)
       i.stroke(0)
-      i.line(i.pmouseX,i.pmouseY,i.mouseX,i.mouseY)
+      i.point(i.mouseX,i.mouseY)
       xHist.push(i.mouseX)
       yHist.push(i.mouseY)
     }
@@ -47,10 +47,10 @@ var drawingArea = function(i) {
     }
 
     i.getImage = function() {
-      minX = Math.min(...xHist)-50
-      maxX = Math.max(...xHist)+50
-      minY = Math.min(...yHist)-50
-      maxY = Math.max(...yHist)+50
+      minX = Math.min(...xHist)-25
+      maxX = Math.max(...xHist)+25
+      minY = Math.min(...yHist)-25
+      maxY = Math.max(...yHist)+25
       minval = Math.min(minX,minY)
       maxval = Math.min(maxX,maxY)
       ctx = i.get(minval,minval,maxval-minval,maxval-minval).drawingContext
