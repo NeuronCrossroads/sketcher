@@ -12,6 +12,7 @@ var xHist = [];
 var yHist = [];
 var percents = [0.,0.,0.,0.,0.];
 var new_percents = [0.166,0.166,0.166,0.166,0.166];
+var mouseready = false;
 let model = prepModel()
 loadDict()
 
@@ -33,11 +34,20 @@ var drawingArea = function(i) {
   i.drawLines = function() {
     var conditions = i.mouseX > 0 && i.mouseX < cwidth && i.mouseY > 0 && i.mouseY < cheight && i.mouseIsPressed
     if (conditions) {
-      i.strokeWeight(15)
+      i.strokeWeight(10)
       i.stroke(0)
-      i.point(i.mouseX,i.mouseY)
+      if (mouseready) {
+        i.line(i.pmouseX,i.pmouseY,i.mouseX,i.mouseY)
+      }
+      else {
+        i.line(i.mouseX,i.mouseY,i.mouseX,i.mouseY)
+        mouseready = true
+      }
       xHist.push(i.mouseX)
       yHist.push(i.mouseY)
+    }
+    if (i.mouseIsPressed != true) {
+      mouseready = false
     }
 
     i.clear = function() {
