@@ -13,6 +13,7 @@ var yHist = [];
 var percents = [0.,0.,0.,0.,0.];
 var new_percents = [0.166,0.166,0.166,0.166,0.166];
 var mouseready = false;
+var changed = false;
 let model = prepModel()
 loadDict()
 
@@ -36,6 +37,7 @@ var drawingArea = function(i) {
     if (conditions) {
       i.strokeWeight(10)
       i.stroke(0)
+      changed = true;
       if (mouseready) {
         i.line(i.pmouseX,i.pmouseY,i.mouseX,i.mouseY)
       }
@@ -48,12 +50,17 @@ var drawingArea = function(i) {
     }
     if (i.mouseIsPressed != true) {
       mouseready = false
+      if (changed == true) {
+        updatePie()
+        changed = false;
+      }
     }
 
     i.clear = function() {
       i.background(255)
       xHist = []
       yHist = []
+      changed = false;
     }
 
     i.getImage = function() {
@@ -123,5 +130,3 @@ var pie = function(i) {
   }
 }
 var graphArea = new p5(pie, 'pieArea')
-
-document.addEventListener('mouseup',updatePie)
